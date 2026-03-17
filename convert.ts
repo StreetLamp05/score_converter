@@ -18,27 +18,22 @@ type ScoreResult = {
  * scaled: scaled score
  * percentile: percentile
  */
-function convert(value: number, from: string, to: string): ScoreResult {
-    to = to.toLowerCase()
+function convert(value: number, from: string): ScoreResult {
     from = from.toLowerCase()
     if (!(from === "z" || from === "t" || from === "ss" || from === "scaled" || from === "percentile")) {
         throw new Error("Invalid input: from");
-    } else if (!(to === "z" || to === "t" || to === "ss" || to === "scaled" || to === "percentile") ) {
-        throw new Error("Invalid input: to");
-    } else if (to === from) {
-        throw new Error("Invalid input: *from cannot equal *to");
     }
 
-    let z: number;
+    let z!: number;
     if (from !== "z") {
         if (from === "t") {
             z = tToZ(value);
         } else if (from === "ss") {
             z = ssToZ(value);
         } else if (from === "scaled") {
-            z == scaledToZ(value);
+            z = scaledToZ(value);
         } else if (from === "percentile") {
-            z == percentileToZ(value);
+            z = percentileToZ(value);
         }
     } else {
         z = value
