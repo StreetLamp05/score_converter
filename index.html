@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Score Converter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <div class="overline">Psychoeducational Assessment Tool</div>
+        <h1>Score Converter</h1>
+        <p class="subtitle">Enter any psychometric score to see its equivalents across all standard transformations.</p>
+      </header>
+
+      <!-- Input Card -->
+      <div class="card input-card">
+        <label class="field-label">Score Type</label>
+        <div class="type-buttons" id="type-buttons">
+          <button class="type-btn active" data-type="z">z-Score</button>
+          <button class="type-btn" data-type="t">T-Score</button>
+          <button class="type-btn" data-type="ss">Standard Score</button>
+          <button class="type-btn" data-type="scaled">Scaled Score</button>
+          <button class="type-btn" data-type="percentile">Percentile Rank</button>
+        </div>
+
+        <label class="field-label">
+          Value <span class="field-hint" id="field-hint">— Mean = 0, SD = 1</span>
+        </label>
+        <input id="score-input" type="number" step="0.01" value="0" />
+        <div id="error" class="error hidden"></div>
+      </div>
+
+      <!-- Classification Badge -->
+      <div id="classification-wrap" class="classification-wrap hidden">
+        <span id="classification-badge" class="classification-badge"></span>
+      </div>
+
+      <!-- Bell Curve -->
+      <div id="bell-card" class="card bell-card hidden">
+        <svg id="bell-svg" viewBox="0 0 360 140"></svg>
+      </div>
+
+      <!-- Results Table -->
+      <div id="results-card" class="card results-card hidden">
+        <div class="results-header">Equivalent Scores</div>
+        <div id="results-list"></div>
+      </div>
+
+      <!-- Footer -->
+      <p id="footer-note" class="footer-note hidden">
+        Conversions assume a normal distribution.<br />
+        Percentile ranks are cumulative (area below the score).
+      </p>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

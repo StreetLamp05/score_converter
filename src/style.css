@@ -1,0 +1,243 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: #f5f3ef;
+  font-family: 'Newsreader', Georgia, 'Times New Roman', serif;
+  color: #2a2a2a;
+}
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* Header */
+header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.overline {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #777;
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Cards */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  margin-bottom: 24px;
+}
+
+.input-card {
+  padding: 28px 28px 24px;
+}
+
+/* Labels */
+.field-label {
+  display: block;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.field-hint {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* Type Buttons */
+.type-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.type-btn {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  background: #f5f3ef;
+  color: #555;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.type-btn.active {
+  background: #4a6fa5;
+  color: #fff;
+  font-weight: 500;
+}
+
+/* Input */
+input[type="number"] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 22px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  border: 2px solid #e0ddd8;
+  border-radius: 8px;
+  outline: none;
+  background: #fafaf8;
+  color: #2a2a2a;
+  transition: border-color 0.15s;
+}
+
+input[type="number"]:focus {
+  border-color: #4a6fa5;
+}
+
+/* Error */
+.error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #c45a2d;
+  font-family: 'DM Mono', monospace;
+}
+
+/* Classification */
+.classification-wrap {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.classification-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: 12px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 20px;
+}
+
+/* Bell Curve */
+.bell-card {
+  padding: 20px 20px 12px;
+}
+
+.bell-card svg {
+  width: 100%;
+  max-width: 400px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Results */
+.results-card {
+  overflow: hidden;
+}
+
+.results-header {
+  padding: 14px 28px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #999;
+  border-bottom: 1px solid #eee;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  border-bottom: 1px solid #f0efec;
+}
+
+.result-row:last-child {
+  border-bottom: none;
+}
+
+.result-row.is-input {
+  background: #f8f7f4;
+}
+
+.result-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #2a2a2a;
+}
+
+.result-row.is-input .result-label {
+  font-weight: 500;
+  color: #4a6fa5;
+}
+
+.input-tag {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  margin-left: 8px;
+  color: #4a6fa5;
+  opacity: 0.7;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.result-desc {
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 2px;
+}
+
+.result-value {
+  font-size: 20px;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: #2a2a2a;
+}
+
+.result-row.is-input .result-value {
+  color: #4a6fa5;
+}
+
+/* Footer */
+.footer-note {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  margin-top: 24px;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.hidden {
+  display: none;
+}

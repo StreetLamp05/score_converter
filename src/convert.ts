@@ -1,4 +1,4 @@
-type ScoreResult = {
+export type ScoreResult = {
     z: number;
     t: number;
     ss: number;
@@ -18,7 +18,7 @@ type ScoreResult = {
  * scaled: scaled score
  * percentile: percentile
  */
-function convert(value: number, from: string): ScoreResult {
+export function convert(value: number, from: string): ScoreResult {
     from = from.toLowerCase()
     if (!(from === "z" || from === "t" || from === "ss" || from === "scaled" || from === "percentile")) {
         throw new Error("Invalid input: from");
