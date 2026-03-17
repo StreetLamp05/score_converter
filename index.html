@@ -56,6 +56,43 @@
         Conversions assume a normal distribution.<br />
         Percentile ranks are cumulative (area below the score).
       </p>
+
+      <!-- Methodology -->
+      <div class="card methodology-card">
+        <details>
+          <summary class="methodology-summary">How conversions are performed</summary>
+          <div class="methodology-body">
+            <p>All score types are first converted to a <strong>z-score</strong> (the universal intermediate), then from the z-score to every other type using standard linear transformations:</p>
+            <ul>
+              <li><strong>T-Score:</strong> T = (z &times; 10) + 50</li>
+              <li><strong>Standard Score:</strong> SS = (z &times; 15) + 100</li>
+              <li><strong>Scaled Score:</strong> Scaled = (z &times; 3) + 10</li>
+            </ul>
+
+            <h3>Z-Score &rarr; Percentile (normalCDF)</h3>
+            <p>
+              Converting a z-score to a percentile requires the <em>cumulative distribution function</em> (CDF) of the standard normal distribution&mdash;i.e., the probability that a normally distributed value falls at or below <em>z</em>.
+            </p>
+            <p>
+              We use the <strong>Abramowitz &amp; Stegun polynomial approximation</strong> (formula 26.2.17), which achieves an absolute error less than 7.5 &times; 10<sup>&minus;8</sup>. It computes:
+            </p>
+            <pre><code>k = 1 / (1 + 0.2316419 &times; |z|)
+&Phi;(z) &approx; 1 &minus; &phi;(z) &times; k(b&#8321; + k(b&#8322; + k(b&#8323; + k(b&#8324; + k&middot;b&#8325;))))</code></pre>
+            <p>where &phi;(z) is the standard normal PDF and b&#8321;&hellip;b&#8325; are fixed coefficients. For negative z, symmetry gives &Phi;(z) = 1 &minus; &Phi;(|z|).</p>
+            <p class="methodology-ref">Reference: <a href="https://personal.math.ubc.ca/~cbm/aands/page_932.htm" target="_blank" rel="noopener">Abramowitz &amp; Stegun, <em>Handbook of Mathematical Functions</em>, p. 932</a>.</p>
+
+            <h3>Percentile &rarr; Z-Score (inverseCDF)</h3>
+            <p>
+              The reverse&mdash;converting a percentile to a z-score&mdash;requires the <em>inverse</em> (quantile function) of the normal CDF. We use a <strong>rational approximation with two regions</strong>:
+            </p>
+            <ul>
+              <li><strong>Central region</strong> (|p &minus; 0.5| &lt; 0.42): a rational polynomial in (p &minus; 0.5)&sup2; using coefficients a&#8321;&hellip;a&#8324; and b&#8321;&hellip;b&#8324;.</li>
+              <li><strong>Tail region</strong>: a polynomial in r = ln(&minus;ln(p)) using nine coefficients c&#8321;&hellip;c&#8329;, with sign correction for the lower tail.</li>
+            </ul>
+            <p class="methodology-ref">Reference: <a href="https://www.quantstart.com/static/ebooks/cpp/sample.pdf" target="_blank" rel="noopener">Beasley &amp; Springer, rational approximation for the inverse normal CDF (pp. 16)</a>.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </div>
 
